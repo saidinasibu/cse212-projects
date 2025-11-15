@@ -5,25 +5,39 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 [TestClass]
 public class PriorityQueueTests
 {
+    /// <summary>
+    /// Test case for normal behavior with different priorities.
+    /// Expected: The item with the highest priority should be returned first.
+    /// </summary>
+    /// 
+    /// Perfectly working test case.
     [TestMethod]
-    // Scenario: 
-    // Expected Result: 
-    // Defect(s) Found: 
     public void TestPriorityQueue_1()
     {
-        var priorityQueue = new PriorityQueue();
-        Assert.Fail("Implement the test case and then remove this.");
+        var queue = new PriorityQueue();
+        queue.Enqueue("Low", 1);
+        queue.Enqueue("High", 10);
+        queue.Enqueue("Medium", 5);
+
+        var result = queue.Dequeue();
+        Assert.AreEqual("High", result);
     }
 
+    /// <summary>
+    /// Test case when multiple items have the same highest priority.
+    /// Expected: The one that appears later in the list should be returned.
+    /// </summary>
+    /// 
+    /// Perfectly working test case.
     [TestMethod]
-    // Scenario: 
-    // Expected Result: 
-    // Defect(s) Found: 
     public void TestPriorityQueue_2()
     {
-        var priorityQueue = new PriorityQueue();
-        Assert.Fail("Implement the test case and then remove this.");
-    }
+        var queue = new PriorityQueue();
+        queue.Enqueue("A", 5);
+        queue.Enqueue("B", 10);
+        queue.Enqueue("C", 10);
 
-    // Add more test cases as needed below.
+        var result = queue.Dequeue();
+        Assert.AreEqual("C", result); // It's because it comes later with same high priority
+    }
 }
